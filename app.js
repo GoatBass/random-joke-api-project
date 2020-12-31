@@ -19,6 +19,14 @@ btn.addEventListener("click", updateJoke);
 //This does exactly the same as on top
 function updateJoke() {
   fetch("https://api.chucknorris.io/jokes/random")
+    //Same as parsing JSON
     .then((response) => response.json())
-    .then((data) => (displayJoke.innerHTML = data.value));
+    //Same as what the function does on top,
+    .then((data) => updateDOM(data))
+    //error call out
+    .catch((error) => console.log(error));
+}
+
+function updateDOM(e) {
+  displayJoke.innerHTML = e.value;
 }
